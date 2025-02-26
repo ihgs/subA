@@ -1,12 +1,5 @@
 on:
-  workflow_dispatch:
-    inputs:
-      previousTag:
-        description: previous
-        required: true
-      releaseTag:
-        description: The tag
-        required: true
+  push:
 
 jobs:
   release:
@@ -23,7 +16,7 @@ jobs:
             .addRaw('### Test Result', true)
             .addRaw('Passed: 100, Failed: 60', true)
             .addRaw('### 静的解析結果', true)
-            .addDetail('詳細', 'aaaaaaa\nbbbbbbb\naaaaaa\nbbbbbbb\naaaaaa\nbbbbbbb\naaaaaa\nbbbbbbb\naaaaaa\nbbbbbbb\n')
+            .addDetails('詳細', 'aaaaaaa\nbbbbbbb\naaaaaa\nbbbbbbb\naaaaaa\nbbbbbbb\naaaaaa\nbbbbbbb\naaaaaa\nbbbbbbb\n')
             .addRaw('### ウィルスチェック', true)
             .addRaw('OK', true)
             .write()
