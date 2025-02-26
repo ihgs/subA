@@ -7,6 +7,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: cyclo
+      id: cyclo
       run: |
         npm install
         npm run calc > cyclo.txt
