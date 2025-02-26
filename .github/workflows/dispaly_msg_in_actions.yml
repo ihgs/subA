@@ -5,10 +5,16 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
+    - name: cyclo
+      run: |
+        npm run calc > cyclo.txt
+      continue-on-error: true
     - name: Generate release notes
       uses: actions/github-script@v7
       with:
         script: |
+          const fs = require('fs');
+          const cycloContent = fs.readFileSync('cyclo.txt', 'utf8');
           core.summary
             .addHeading('Release info')
             .addRaw('\n#### Test Result', true)
