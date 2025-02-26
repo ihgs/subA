@@ -1,0 +1,23 @@
+{
+  "name": "suba",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "calc": "cyclomatic-complexity './src/**/*.ts' --threshold-warnings 10 --threshold-errors 20 ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ihgs/subA.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ihgs/subA/issues"
+  },
+  "homepage": "https://github.com/ihgs/subA#readme",
+  "devDependencies": {
+    "cyclomatic-complexity": "^1.2.5"
+  }
+}
