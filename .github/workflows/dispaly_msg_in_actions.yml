@@ -27,3 +27,6 @@ jobs:
             .addRaw('\n#### ウィルスチェック', true)
             .addRaw('OK', true)
             .write()
+    - name: Check cyclo status
+      if: failure()
+      run: exit 1
