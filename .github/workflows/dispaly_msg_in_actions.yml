@@ -23,6 +23,6 @@ jobs:
             .addRow('### Test Result')
             .addRow('Passed: 100, Failed: 60')
             .addRow('### 静的解析結果')
-            .addDetail('詳細', 'aaaaaaa\nbbbbbbb\n'aaaaaa\nbbbbbbb\naaaaaa\nbbbbbbb\naaaaaa\nbbbbbbb\naaaaaa\nbbbbbbb\n)
+            .addDetail('詳細', 'aaaaaaa\nbbbbbbb\naaaaaa\nbbbbbbb\naaaaaa\nbbbbbbb\naaaaaa\nbbbbbbb\naaaaaa\nbbbbbbb\n')
             .addRow('### ウィルスチェック')
             .addRow('OK')
