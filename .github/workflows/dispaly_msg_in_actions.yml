@@ -31,5 +31,5 @@ jobs:
             .addRaw('OK', true)
             .write()
     - name: Check cyclo status
-      if: ${{ steps.error_execution.outcome == 'failure'}}
+      if: steps.cyclo.outcome == 'failure'
       run: exit 1
