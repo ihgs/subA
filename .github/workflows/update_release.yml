@@ -16,7 +16,8 @@ jobs:
       uses: actions/github-script@v7
       with:
         script: |
-          const releaseTag = context.payload.inputs.release_tag
+          const releaseTag = context.payload.inputs.releaseTag
+          const previousTag = context.payload.inputs.previousTag
           const releaseNotesParams = {
             owner: context.repo.owner,
             repo: context.repo.repo,
