@@ -1,0 +1,38 @@
+on:
+  workflow_dispatch:
+    inputs:
+      previousTag:
+        description: previous
+        required: true
+      releaseTag:
+        description: The tag
+        required: true
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Generate release notes
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const releaseNotesParams = {
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            tag_name: releaseTag,
+          };
+
+          if (previousTag) {
+            releaseNotesParams.previous_tag_name = previousTag;
+          }
+
+          const releaseNotes = await github.rest.repos.generateReleaseNotes(releaseNotesParams);
+          console.log(releaseNotes);
+
+          await github.rest.repos.createRelease({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            tag_name: releaseTag,
+            name: releaseTag,
+            body: releaseNotes.data.body,
+          });
