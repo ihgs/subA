@@ -25,7 +25,7 @@ jobs:
             .addRaw('\n#### 静的解析結果', true)
             .addDetails('詳細', '<pre>aaaaaaa\nbbbbbbb\naaaaaa\nbbbbbbb\naaaaaa\nbbbbbbb\naaaaaa\nbbbbbbb\naaaaaa\nbbbbbbb\n</pre>')
             .addRaw('\n#### 複雑度', true)
-            .addRaw('NG', true)
+            .addRaw(steps.cyclo.outcom, true)
             .addDetails('詳細', '<pre>'+cycloContent+'</pre>')
             .addRaw('\n#### ウィルスチェック', true)
             .addRaw('OK', true)
