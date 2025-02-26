@@ -18,12 +18,12 @@ jobs:
         script: |
           const releaseTag = context.payload.inputs.releaseTag
           const previousTag = context.payload.inputs.previousTag
-          
-          core.summary.addHeading('Release info')
-          core.summary.addRow('### Test Result')
-          core.summary.addRow('Passed: 100, Failed: 60')
-          core.summary.addRow('### 静的解析結果')
-          core.summary.addDetail('詳細', 'aaaaaaa\nbbbbbbb\naaaaaa\nbbbbbbb\naaaaaa\nbbbbbbb\naaaaaa\nbbbbbbb\naaaaaa\nbbbbbbb\n')
-          core.summary.addRow('### ウィルスチェック')
-          core.summary.addRow('OK')
-          core.summary.write()
+          core.summary
+            .addHeading('Release info')
+            .addRaw('### Test Result', true)
+            .addRaw('Passed: 100, Failed: 60', true)
+            .addRaw('### 静的解析結果', true)
+            .addDetail('詳細', 'aaaaaaa\nbbbbbbb\naaaaaa\nbbbbbbb\naaaaaa\nbbbbbbb\naaaaaa\nbbbbbbb\naaaaaa\nbbbbbbb\n')
+            .addRaw('### ウィルスチェック', true)
+            .addRaw('OK', true)
+            .write()
