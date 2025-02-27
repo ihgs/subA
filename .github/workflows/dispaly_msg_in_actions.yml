@@ -12,23 +12,34 @@ jobs:
         npm install
         npm run calc > cyclo.txt
       continue-on-error: true
-    - name: Generate release notes
+    - name: Actions summary
       uses: actions/github-script@v7
       with:
         script: |
           const fs = require('fs');
           const cycloContent = fs.readFileSync('cyclo.txt', 'utf8');
+
           core.summary
-            .addHeading('Release info')
-            .addRaw('\n#### Test Result', true)
+            .addHeading('Summary Title')
+            .addTable(
+              [{data: '',header: true}, {'data': 'Result', header: true}],
+              ['Test Result', 'OK'],
+              ['Lint Result', 'NG'],
+              ['Coverage Result', 'OK'],
+            )
+            .addRaw('\n#### Test result', true)
             .addRaw('Passed: 100, Failed: 60', true)
-            .addRaw('\n#### 静的解析結果', true)
-            .addDetails('詳細', '<pre>aaaaaaa\nbbbbbbb\naaaaaa\nbbbbbbb\naaaaaa\nbbbbbbb\naaaaaa\nbbbbbbb\naaaaaa\nbbbbbbb\n</pre>')
+            .addRaw('\n#### Lint result', true)
+            .addDetails('詳細', 
+              '<pre>'
+              +['１行目','2行目','3行目','4行目].join('\n')
+              +'</pre>'
+            )
+            .addRaw('\n#### Coverage', true)
+            .addRaw('95%', true)
             .addRaw('\n#### 複雑度', true)
             .addRaw('${{ steps.cyclo.outcome }}', true)
             .addDetails('詳細', '<pre>'+cycloContent+'</pre>')
-            .addRaw('\n#### ウィルスチェック', true)
-            .addRaw('OK', true)
             .write()
     - name: Check cyclo status
       if: steps.cyclo.outcome == 'failure'
