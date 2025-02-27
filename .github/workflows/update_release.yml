@@ -20,12 +20,13 @@ jobs:
               release_id: releaseId
             })
             core.summary.addRaw(JSON.stringify(release)).write()
+            const summaryUrl = `https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${process.env.GITHUB_RUN_ID}`;
 
             await github.rest.repos.updateRelease({
               owner: context.repo.owner,
               repo: context.repo.repo,
               release_id: releaseId,
-              body: release.data.body + "\n" + "hello"
+              body: release.data.body + "\n" + `[actions](${summaryUrl})``
             })
     #       if (previousTag) {
     #         releaseNotesParams.previous_tag_name = previousTag;
