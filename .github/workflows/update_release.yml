@@ -1,12 +1,12 @@
 on:
   release:
-    types: [published]
+    types: [created, published]
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
       - name: echo
-        run: echo ${{context.payload.release.id}}
+        run: echo ${{github.event.payload.release.id}}
     # - name: Generate release notes
     #   uses: actions/github-script@v7
     #   with:
