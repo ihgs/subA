@@ -21,6 +21,14 @@ jobs:
 
           core.summary
             .addHeading('Summary Title')
+            .addTable(
+              [ 
+                [{data: '',header: true}, {data: 'Result', header: true}],
+                ['Test Result', 'OK'],
+                ['Lint Result', 'NG'],
+                ['Coverage Result', 'OK'],
+              ]
+            )
             .addRaw('\n#### Test result', true)
             .addRaw('Passed: 100, Failed: 60', true)
             .addRaw('\n#### Lint result', true)
