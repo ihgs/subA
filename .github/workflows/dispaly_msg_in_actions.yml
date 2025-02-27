@@ -30,6 +30,11 @@ jobs:
             .addRaw('\n#### Test result', true)
             .addRaw('Passed: 100, Failed: 60', true)
             .addRaw('\n#### Lint result', true)
+            .addDetails('詳細', 
+              '<pre>'
+              +['１行目','2行目','3行目','4行目'].join('\n')
+              +'</pre>'
+            )
             .addRaw('\n#### Coverage', true)
             .addRaw('95%', true)
             .addRaw('\n#### 複雑度', true)
