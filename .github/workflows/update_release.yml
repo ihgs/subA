@@ -19,6 +19,7 @@ jobs:
               repo: context.repo.repo,
               release_id: releaseId
             })
+            core.summary.addRaw(JSON.stringify(release))
 
             await github.rest.repos.updateRelease({
               owner: context.repo.owner,
