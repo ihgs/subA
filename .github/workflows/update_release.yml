@@ -8,7 +8,7 @@ jobs:
       - name: echo
         run: |
           echo "hello"
-          echo "${{ github.event.payload.release.id }}"
+          echo "${{ github.event.payload.release }}"
     # - name: Generate release notes
     #   uses: actions/github-script@v7
     #   with:
