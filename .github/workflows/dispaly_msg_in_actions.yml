@@ -18,6 +18,10 @@ jobs:
       uses: actions/github-script@v7
       with:
         script: |
+          const icons = {
+            "failure": ":x:",
+            "success": ":white_check_mark:"
+          }
           const fs = require('fs');
           const cycloContent = fs.readFileSync('cyclo.txt', 'utf8');
 
@@ -42,7 +46,7 @@ jobs:
             .addRaw('\n#### Coverage', true)
             .addRaw('95%', true)
             .addRaw('\n#### 複雑度', true)
-            .addRaw('${{ steps.cyclo.outcome }}', true)
+            .addRaw(icons[steps.cyclo.outcome], true)
             .addDetails('詳細', '<pre>'+cycloContent+'</pre>')
             .write()
     - name: Check cyclo status
