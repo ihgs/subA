@@ -46,7 +46,7 @@ jobs:
             .addRaw('\n#### Coverage', true)
             .addRaw('95%', true)
             .addRaw('\n#### 複雑度', true)
-            .addRaw(icons[steps.cyclo.outcome], true)
+            .addRaw(icons['${{ steps.cyclo.outcome }}'], true)
             .addDetails('詳細', '<pre>'+cycloContent+'</pre>')
             .write()
     - name: Check cyclo status
