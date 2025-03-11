@@ -19,8 +19,8 @@ jobs:
       with:
         script: |
           const icons = {
-            "failure": ":x:",
-            "success": ":white_check_mark:"
+            ":failure": ":x:",
+            "failure": ":white_check_mark:"
           }
           const fs = require('fs');
           const cycloContent = fs.readFileSync('cyclo.txt', 'utf8');
