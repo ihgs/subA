@@ -30,16 +30,27 @@ jobs:
   #       path: before
   #   - run: ls before
   #   - run: git status
-  pattern2:
+  # pattern2:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v4
+  #     with: 
+  #       path: after
+  #   - uses: actions/checkout@v4
+  #     with: 
+  #       ref: v1.0.4
+  #       path: before
+  #   - run: ls -l
+  #   - run: cd before; git log
+  #   - run: cd after; git log
+  pattern:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-      with: 
-        path: after
-    - uses: actions/checkout@v4
-      with: 
-        ref: v1.0.4
-        path: before
-    - run: ls -l
-    - run: cd before; git log
-    - run: cd after; git log
+      with:
+        fetch-depth: 0
+    - run: git log
+    - run: touch created.txt
+    - run: git switch v1.0.4
+    - run: git log
+    - run: git status
