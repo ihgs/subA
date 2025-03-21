@@ -1,0 +1,13 @@
+on:
+  push:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - run: git log
+    - uses: actions/checkout@v4
+      with:
+        ref: v1.0.4
+    - run: git log
