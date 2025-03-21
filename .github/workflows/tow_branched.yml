@@ -2,15 +2,31 @@ on:
   push:
 
 jobs:
-  release:
+  cpplint:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - run: git log
     - run: touch created.txt
+    - run: echo before > created.txt
     - run: git status
+    - uses: actions/upload-artifact@v4
+      with:
+        name: before
+        path: created.txt # or path/to/artifact
     - uses: actions/checkout@v4
       with:
         ref: v1.0.4
+    - run: echo after > created.txt
+    - uses: actions/upload-artifact@v4
+      with:
+        name: after
+        path: created.txt # or path/to/artifact
     - run: git status
     - run: git log
+
+    - uses: actions/download-artifact
+      with:
+        name: before
+        path: before
+    - run: git status
