@@ -14,14 +14,14 @@ jobs:
       with:
         name: before
         path: created.txt # or path/to/artifact
-    # - uses: actions/checkout@v4
-    #   with:
-    #     ref: v1.0.4
-    # - run: echo after > created.txt
-    # - uses: actions/upload-artifact@v4
-    #   with:
-    #     name: after
-    #     path: created.txt # or path/to/artifact
+    - uses: actions/checkout@v4
+      with:
+        ref: v1.0.4
+    - run: echo after > created.txt
+    - uses: actions/upload-artifact@v4
+      with:
+        name: after
+        path: created.txt # or path/to/artifact
     # - run: git status
     # - run: git log
     # - uses: actions/download-artifact
