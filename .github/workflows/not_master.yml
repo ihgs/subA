@@ -1,4 +1,5 @@
 on:
+  push: 
   workflow_dispatch:
     inputs:
       previousTag:
@@ -13,28 +14,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Generate release notes
-      uses: actions/github-script@v7
-      with:
-        script: |
-          const releaseTag = context.payload.inputs.releaseTag
-          const previousTag = context.payload.inputs.previousTag
-          const releaseNotesParams = {
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            tag_name: releaseTag,
-          };
-
-          if (previousTag) {
-            releaseNotesParams.previous_tag_name = previousTag;
-          }
-
-          const releaseNotes = await github.rest.repos.generateReleaseNotes(releaseNotesParams);
-          console.log(releaseNotes);
-
-          await github.rest.repos.createRelease({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            tag_name: releaseTag,
-            name: releaseTag,
-            body: releaseNotes.data.body,
-          });
+      run: echo "test"
