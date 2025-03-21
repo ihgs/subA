@@ -27,5 +27,6 @@ jobs:
     - uses: actions/download-artifact@v4
       with:
         name: before
-        path: before_created.txt
+        path: before
+    - run: ls before
     - run: git status
