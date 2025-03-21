@@ -47,8 +47,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
+      # with:
+      #   fetch-depth: 0
     - run: git log
     - run: touch created.txt
     - run: git checkout v1.0.4
