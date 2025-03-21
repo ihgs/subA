@@ -22,10 +22,10 @@ jobs:
       with:
         name: after
         path: created.txt # or path/to/artifact
-    # - run: git status
-    # - run: git log
-    # - uses: actions/download-artifact
-    #   with:
-    #     name: before
-    #     path: before_created.txt
-    # - run: git status
+    - run: git status
+    - run: git log
+    - uses: actions/download-artifact@v4
+      with:
+        name: before
+        path: before_created.txt
+    - run: git status
