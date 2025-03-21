@@ -34,13 +34,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - run: git log
-    - run: touch created.txt
-    - run: echo before > created.txt
-    - run: git status
-    - run: git switch v1.0.4
-    - run: echo after > after_created.txt
-    - run: git status
-    - run: git log
-    - run: ls
-    - run: git status
+      with: 
+        path: after
+    - uses: actions/checkout@v4
+      with: 
+        ref: v1.0.4
+        path: before
+    - run: ls -l
+    - run: cd before; git log
+    - run: cd after; git log
