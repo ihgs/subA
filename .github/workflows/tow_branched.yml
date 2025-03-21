@@ -51,6 +51,6 @@ jobs:
         fetch-depth: 0
     - run: git log
     - run: touch created.txt
-    - run: git switch v1.0.4
+    - run: git checkout v1.0.4
     - run: git log
     - run: git status
