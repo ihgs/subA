@@ -43,11 +43,10 @@ jobs:
   #   - run: ls -l
   #   - run: cd before; git log
   #   - run: cd after; git log
-  user:
-    - run: echo $USER
   pattern:
     runs-on: ubuntu-latest
     steps:
+    - run: echo $USER
     - uses: actions/checkout@v4
       with:
         fetch-depth: 0
