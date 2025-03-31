@@ -43,6 +43,8 @@ jobs:
   #   - run: ls -l
   #   - run: cd before; git log
   #   - run: cd after; git log
+  user:
+    - run: echo $USER
   pattern:
     runs-on: ubuntu-latest
     steps:
