@@ -1,0 +1,27 @@
+version: "3.7"
+
+services:
+  db:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    hostname: my-db-host
+    volumes:
+      # ローカルのpostgres/initディレクトリをコンテナの/docker-entrypoint-initdb.dにマウント
+      - ./scripts:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    healthcheck:
+      test: ["CMD-SHELL", "psql -U postgres -d testdb  -Atq -c 'SELECT COUNT(*) >= 3 FROM books;'| grep -q t  || exit 1"]
+  app:
+    image: node:latest
+    command: npm run test
+    environment:
+      DB_HOST: my-db-host
+      DB_USER: testuser
+      DB_PASS: password
+      DB_DATABASE: testdb
+    depends_on: 
+      db: 
+        condition: service_healthy
