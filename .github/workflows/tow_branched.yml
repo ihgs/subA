@@ -43,16 +43,20 @@ jobs:
   #   - run: ls -l
   #   - run: cd before; git log
   #   - run: cd after; git log
-  user:
-    - run: echo $USER
-  pattern:
+  test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-    - run: git show
-    - run: touch created.txt
-    - run: git checkout v1.0.4
-    - run: git show
-    - run: git status
+    - run: podman serach --limit 10 postgres
+  # user:
+  #   - run: echo $USER
+  # pattern:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v4
+  #     with:
+  #       fetch-depth: 0
+  #   - run: git show
+  #   - run: touch created.txt
+  #   - run: git checkout v1.0.4
+  #   - run: git show
+  #   - run: git status
