@@ -46,10 +46,11 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v4
     - run: which docker
     - run: docker --version
     - run: podman search --limit 10 postgres
-    - run: docker compose up -d 
+    - run: docker compose up 
   # user:
   #   - run: echo $USER
   # pattern:
