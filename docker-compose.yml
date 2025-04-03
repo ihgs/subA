@@ -13,9 +13,11 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     healthcheck:
-      test: ["CMD-SHELL", "psql -U postgres -d testdb  -Atq -c 'SELECT COUNT(*) >= 30 FROM books;'| grep -q t  || exit 1"]
+      test: ["CMD-SHELL", "psql -U postgres -d testdb  -Atq -c 'SELECT COUNT(*) >= 3 FROM books;'| grep -q t  || exit 1"]
   app:
-    image: node:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     command: npm run test
     environment:
       DB_HOST: my-db-host

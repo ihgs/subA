@@ -50,7 +50,7 @@ jobs:
     - run: which docker
     - run: docker --version
     - run: podman search --limit 10 postgres
-    - run: docker compose up 
+    - run: docker compose up --abort-on-container-exit --build
   # user:
   #   - run: echo $USER
   # pattern:
